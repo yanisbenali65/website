@@ -3,170 +3,208 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NovaLab | Monétise ton expertise</title>
+    <title>Lina Kadmiri | NovaLab - Ton Indépendance Digitale</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@1,400;1,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-color: #050505; --text-main: #FFFFFF; --text-muted: #A0A0A0;
-            --glow-purple: rgba(107, 33, 168, 0.35); --glow-blue: rgba(56, 189, 248, 0.2);
-            --card-bg: rgba(25, 25, 25, 0.6); --border-color: rgba(255, 255, 255, 0.08);
-            --font-sans: 'Inter', sans-serif; --font-serif: 'Playfair Display', serif;
+            /* Palette Crème / Beige / Nude */
+            --bg-color: #FAF8F5; 
+            --text-main: #2C2A28; 
+            --text-muted: #6B6863;
+            --primary: #C4A482; /* Or doux / Beige chaud */
+            --primary-glow: rgba(196, 164, 130, 0.3);
+            --card-bg: rgba(255, 255, 255, 0.7); 
+            --border-color: rgba(196, 164, 130, 0.2);
+            --font-sans: 'Lato', sans-serif; 
+            --font-serif: 'Playfair Display', serif;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { background-color: var(--bg-color); color: var(--text-main); font-family: var(--font-sans); line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        
+        /* Lumières d'ambiance douces */
         .glow-bg { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; pointer-events: none; z-index: -1; overflow: hidden; }
         .glow-1, .glow-2 { position: absolute; border-radius: 50%; filter: blur(120px); }
-        .glow-1 { top: -10%; left: 20%; width: 500px; height: 500px; background: var(--glow-purple); }
-        .glow-2 { bottom: 10%; right: -10%; width: 600px; height: 600px; background: var(--glow-blue); }
-        h1, h2, h3 { font-weight: 400; line-height: 1.2; }
-        .serif-italic { font-family: var(--font-serif); font-style: italic; color: #E2E8F0; }
-        .sur-titre { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #a855f7; margin-bottom: 15px; display: block; }
+        .glow-1 { top: -10%; left: 20%; width: 500px; height: 500px; background: rgba(222, 203, 183, 0.4); }
+        .glow-2 { bottom: 10%; right: -10%; width: 600px; height: 600px; background: rgba(240, 225, 210, 0.5); }
+        
+        /* =========================================
+           ÉTOILES SCINTILLANTES (BACKGROUND)
+           ========================================= */
+        .stars-container { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -2; pointer-events: none; overflow: hidden; }
+        .star { position: absolute; background: var(--primary); border-radius: 50%; opacity: 0; animation: twinkle linear infinite; }
+        @keyframes twinkle {
+            0% { opacity: 0; transform: scale(0.8); box-shadow: 0 0 0 rgba(196, 164, 130, 0); }
+            50% { opacity: 0.8; transform: scale(1.5); box-shadow: 0 0 15px rgba(196, 164, 130, 1); }
+            100% { opacity: 0; transform: scale(0.8); box-shadow: 0 0 0 rgba(196, 164, 130, 0); }
+        } 
+
+        h1, h2, h3 { font-weight: 400; line-height: 1.2; color: #1A1A1A; }
+        .serif-italic { font-family: var(--font-serif); font-style: italic; color: var(--primary); }
+        .sur-titre { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: var(--primary); margin-bottom: 15px; display: block; font-weight: 700; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
         section { padding: 100px 0; }
+        
         header { padding: 32px 0; display: flex; justify-content: space-between; align-items: center; }
-        .logo { font-family: var(--font-sans); font-weight: 600; font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; }
+        .logo { font-family: var(--font-serif); font-weight: 600; font-size: 1.4rem; letter-spacing: 1px; color: var(--text-main); }
+        
         .hero { text-align: center; padding-top: 80px; padding-bottom: 120px; }
         .subtitle-top { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 3px; color: var(--text-muted); margin-bottom: 30px; display: flex; align-items: center; justify-content: center; gap: 15px; }
-        .subtitle-top::before, .subtitle-top::after { content: ""; height: 1px; width: 30px; background-color: var(--text-muted); }
-        .hero h1 { font-size: clamp(3rem, 6vw, 5rem); margin-bottom: 30px; display: flex; flex-direction: column; gap: 10px; }
+        .subtitle-top::before, .subtitle-top::after { content: ""; height: 1px; width: 30px; background-color: var(--border-color); }
+        .hero h1 { font-size: clamp(2.8rem, 5vw, 4.5rem); margin-bottom: 30px; display: flex; flex-direction: column; gap: 10px; }
         .hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 50px auto; font-size: 1.1rem; }
+        
         .btn-group { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; }
-        .btn { padding: 16px 32px; border-radius: 50px; font-size: 0.95rem; font-weight: 500; text-decoration: none; transition: all 0.3s ease; cursor: pointer; display: inline-block; border: none; }
-        .btn-primary { background-color: #fff; color: #000; box-shadow: 0 0 30px rgba(255, 255, 255, 0.2); }
-        .btn-primary:hover { box-shadow: 0 0 40px rgba(255, 255, 255, 0.4); transform: translateY(-2px); }
-        .btn-secondary { background-color: transparent; color: #fff; border: 1px solid rgba(255, 255, 255, 0.3); }
-        .btn-secondary:hover { border-color: #fff; background-color: rgba(255, 255, 255, 0.05); }
-        .stats { display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 30px; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 50px 0; background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.02) 50%, rgba(255,255,255,0) 100%); flex-wrap: wrap; }
-        .stat-item { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1 1 20%; min-width: 200px; }
-        .stat-number { font-size: 3.5rem; font-weight: 300; margin-bottom: 10px; color: #fff; line-height: 1; }
-        .stat-number span { color: #a855f7; }
-        .stat-label { color: var(--text-muted); font-size: 0.9rem; max-width: 180px; margin: 0 auto; line-height: 1.4; }
+        .btn { padding: 16px 32px; border-radius: 50px; font-size: 0.95rem; font-weight: 700; text-decoration: none; transition: all 0.3s ease; cursor: pointer; display: inline-block; border: none; font-family: var(--font-sans); }
+        .btn-primary { background-color: var(--primary); color: #fff; box-shadow: 0 10px 25px var(--primary-glow); }
+        .btn-primary:hover { box-shadow: 0 15px 35px var(--primary-glow); transform: translateY(-2px); background-color: #b59573; }
+        .btn-secondary { background-color: transparent; color: var(--text-main); border: 1px solid var(--primary); }
+        .btn-secondary:hover { background-color: rgba(196, 164, 130, 0.1); }
+        
+        /* Stats (3 colonnes) */
+        .stats { display: flex; flex-direction: row; justify-content: center; align-items: flex-start; gap: 30px; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color); padding: 50px 0; flex-wrap: wrap; background: rgba(255,255,255,0.3); }
+        .stat-item { display: flex; flex-direction: column; align-items: center; text-align: center; flex: 1 1 30%; min-width: 250px; }
+        .stat-number { font-size: 3.5rem; font-family: var(--font-serif); margin-bottom: 10px; color: var(--text-main); line-height: 1; }
+        .stat-number span { color: var(--primary); }
+        .stat-label { color: var(--text-muted); font-size: 0.9rem; max-width: 220px; margin: 0 auto; line-height: 1.4; }
+        
         .timeline-container { position: relative; max-width: 800px; margin: 0 auto; padding: 40px 0; }
-        .timeline-line-bg { position: absolute; left: 24px; top: 0; bottom: 0; width: 2px; background: rgba(255, 255, 255, 0.1); z-index: 0; }
-        .timeline-line-progress { position: absolute; left: 24px; top: 0; width: 2px; height: 0%; background: linear-gradient(to bottom, #a855f7, #38bdf8); z-index: 1; }
+        .timeline-line-bg { position: absolute; left: 24px; top: 0; bottom: 0; width: 2px; background: var(--border-color); z-index: 0; }
+        .timeline-line-progress { position: absolute; left: 24px; top: 0; width: 2px; height: 0%; background: var(--primary); z-index: 1; }
         .timeline-item { position: relative; padding-left: 80px; margin-bottom: 50px; z-index: 2; }
         .timeline-item:last-child { margin-bottom: 0; }
         .timeline-item-anim { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
         .timeline-item-anim.is-visible { opacity: 1; transform: translateY(0); }
-        .timeline-number { position: absolute; left: 0; top: 10px; width: 50px; height: 50px; border-radius: 50%; background: var(--bg-color); border: 2px solid #a855f7; display: flex; align-items: center; justify-content: center; font-weight: 600; font-size: 1.2rem; color: #fff; box-shadow: 0 0 20px rgba(168, 85, 247, 0.2); z-index: 3; transition: box-shadow 0.3s ease; }
-        .timeline-item-anim.is-visible .timeline-number { box-shadow: 0 0 25px rgba(168, 85, 247, 0.7); }
-        .timeline-content { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; backdrop-filter: blur(10px); transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease; }
-        .timeline-content:hover { transform: translateX(10px); border-color: rgba(168, 85, 247, 0.5); background: rgba(35, 35, 35, 0.6); }
-        .timeline-year { color: #a855f7; font-weight: 600; font-size: 0.9rem; margin-bottom: 5px; letter-spacing: 1px; }
-        .timeline-content h3 { font-size: 1.5rem; margin-bottom: 12px; color: #fff; }
-        .timeline-content p { color: var(--text-muted); font-size: 0.95rem; }
+        .timeline-number { position: absolute; left: 0; top: 10px; width: 50px; height: 50px; border-radius: 50%; background: #fff; border: 2px solid var(--primary); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.2rem; color: var(--primary); box-shadow: 0 0 15px var(--primary-glow); z-index: 3; }
+        
+        .timeline-content { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 30px; backdrop-filter: blur(10px); box-shadow: 0 10px 30px rgba(0,0,0,0.03); transition: transform 0.4s ease; }
+        .timeline-content:hover { transform: translateX(10px); border-color: var(--primary); }
+        .timeline-year { color: var(--primary); font-weight: 700; font-size: 0.9rem; margin-bottom: 5px; letter-spacing: 1px; }
+        .timeline-content h3 { font-size: 1.5rem; margin-bottom: 12px; font-family: var(--font-serif); }
+        
         .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
-        .about-image { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; aspect-ratio: 4/5; position: relative; overflow: hidden; display: flex; justify-content: center; align-items: center; }
-        .about-image::after { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(145deg, rgba(168,85,247,0.15), transparent); pointer-events: none; }
+        .about-image { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px; aspect-ratio: 4/5; position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
         .about-content h2 { font-size: 2.8rem; margin-bottom: 25px; }
-        .about-content p { color: var(--text-muted); font-size: 1.05rem; margin-bottom: 20px; }
+        .about-content p { font-size: 1.05rem; margin-bottom: 20px; color: var(--text-muted); }
+        
         .section-title { text-align: center; margin-bottom: 80px; }
         .section-title h2 { font-size: 2.5rem; }
+        
         .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px; }
-        .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; backdrop-filter: blur(10px); transition: transform 0.3s ease, border-color 0.3s ease; }
-        .card:hover { transform: translateY(-5px); border-color: rgba(168, 85, 247, 0.4); }
+        .card { background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 16px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.02); transition: transform 0.3s ease; }
+        .card:hover { transform: translateY(-5px); border-color: var(--primary); box-shadow: 0 15px 35px var(--primary-glow); }
         .card-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
-        .card-tag { display: inline-block; padding: 6px 12px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 4px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: #e2e8f0; }
-        .chrome-icon { width: 50px; height: 50px; border-radius: 50%; background: radial-gradient(circle at 30% 30%, #ffffff 0%, #e2e8f0 15%, #a855f7 45%, #1e293b 80%, #000000 100%); box-shadow: inset -6px -6px 12px rgba(0,0,0,0.6), inset 6px 6px 12px rgba(255,255,255,0.9), 0 10px 20px rgba(0,0,0,0.5), 0 0 15px rgba(168, 85, 247, 0.4); animation: float 4s ease-in-out infinite; flex-shrink: 0; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative; }
+        .card-tag { display: inline-block; padding: 6px 12px; background: rgba(196, 164, 130, 0.1); border: 1px solid var(--border-color); border-radius: 4px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); font-weight: 700; }
+        
+        .chrome-icon { width: 50px; height: 50px; border-radius: 50%; background: linear-gradient(135deg, #FFF 0%, #F5EBE1 50%, #C4A482 100%); box-shadow: inset 2px 2px 5px rgba(255,255,255,0.8), 0 5px 15px rgba(196, 164, 130, 0.3); animation: float 4s ease-in-out infinite; display: flex; align-items: center; justify-content: center; }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-8px); } 100% { transform: translateY(0px); } }
-        .chrome-icon img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
-        .card h3 { font-size: 1.8rem; margin-bottom: 15px; }
-        .card p { color: var(--text-muted); font-size: 0.95rem; }
-        .premium-offer { margin-top: 50px; background: linear-gradient(145deg, rgba(20,20,20,1) 0%, rgba(10,10,10,1) 100%); border: 1px solid rgba(168, 85, 247, 0.3); border-radius: 20px; padding: 60px; position: relative; overflow: hidden; }
-        .premium-offer::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 80%; height: 1px; background: linear-gradient(90deg, transparent, #a855f7, transparent); }
-        .premium-offer-content { position: relative; z-index: 2; }
+        
+        .card h3 { font-size: 1.8rem; margin-bottom: 15px; font-family: var(--font-serif); }
+        
+        .premium-offer { margin-top: 50px; background: #fff; border: 1px solid var(--primary); border-radius: 20px; padding: 60px; position: relative; box-shadow: 0 20px 50px rgba(196, 164, 130, 0.15); }
         .offer-list { list-style: none; margin: 30px 0 40px 0; }
-        .offer-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 15px; color: #E2E8F0; }
-        .offer-list li::before { content: ""; display: block; width: 12px; height: 12px; border-radius: 50%; border: 2px solid #a855f7; background: rgba(168, 85, 247, 0.2); }
-        .testimonials-section { padding-bottom: 80px; }
+        .offer-list li { margin-bottom: 15px; display: flex; align-items: center; gap: 15px; color: var(--text-main); }
+        .offer-list li::before { content: ""; display: block; width: 10px; height: 10px; border-radius: 50%; background: var(--primary); }
+        
+        /* Instagram Section */
+        .instagram-section { padding-bottom: 80px; }
+        .ig-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; margin-top: 50px; justify-items: center; }
+        .ig-post-wrapper { background: #fff; border: 1px solid var(--border-color); border-radius: 20px; padding: 20px; width: 100%; max-width: 400px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        .ig-post-wrapper iframe { max-width: 100% !important; border-radius: 12px !important; }
+
+        /* Carousel */
         .carousel-wrapper { position: relative; max-width: 100%; margin: 0 auto; }
-        .carousel-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 20px 0; -ms-overflow-style: none; scrollbar-width: none; }
-        .carousel-track::-webkit-scrollbar { display: none; }
-        .carousel-card { flex: 0 0 320px; background: linear-gradient(180deg, #161616 0%, #0a0a0a 100%); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 20px; padding: 35px 25px; scroll-snap-align: center; display: flex; flex-direction: column; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); transition: border-color 0.3s ease; }
-        .carousel-card:hover { border-color: rgba(239, 68, 68, 0.2); }
-        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 15px; position: relative; }
-        .quote-icon { color: #ef4444; font-size: 4rem; font-family: var(--font-serif); line-height: 0.5; height: 30px; }
-        .stars-container { display: flex; gap: 4px; }
-        .stars-container svg { width: 16px; height: 16px; fill: #ef4444; }
-        .carousel-card p { font-size: 0.95rem; color: #e2e8f0; line-height: 1.6; flex-grow: 1; margin-bottom: 30px; }
-        .carousel-author-wrapper { display: flex; align-items: center; gap: 15px; margin-top: auto; }
-        .author-avatar { width: 48px; height: 48px; border-radius: 50%; background-color: rgba(255, 255, 255, 0.05); border: 1px solid rgba(168, 85, 247, 0.4); display: flex; align-items: center; justify-content: center; overflow: hidden; flex-shrink: 0; color: var(--text-muted); font-size: 0.7rem; font-weight: 500; }
-        .author-avatar img { width: 100%; height: 100%; object-fit: cover; }
-        .carousel-author-info { display: flex; flex-direction: column; text-align: left; }
-        .carousel-author-info span.author-name { color: #fff; font-weight: 600; font-size: 1rem; }
-        .carousel-author-info span.author-role { color: #a855f7; font-size: 0.75rem; text-transform: uppercase; font-weight: normal; letter-spacing: 1px; margin-top: 3px; }
-        .carousel-controls { display: flex; justify-content: center; gap: 15px; margin-top: 30px; }
-        .carousel-btn { background: #111; border: 1px solid rgba(255, 255, 255, 0.1); color: #fff; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.3s ease; }
-        .carousel-btn:hover { background: #222; border-color: #ef4444; color: #ef4444; }
+        .carousel-track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 20px 0; scrollbar-width: none; }
+        .carousel-card { flex: 0 0 320px; background: #fff; border: 1px solid var(--border-color); border-radius: 20px; padding: 35px 25px; scroll-snap-align: center; display: flex; flex-direction: column; box-shadow: 0 10px 20px rgba(0,0,0,0.03); }
+        .quote-icon { color: var(--primary); font-size: 4rem; font-family: var(--font-serif); line-height: 0.5; height: 30px; }
+        .stars-container svg { width: 16px; height: 16px; fill: var(--primary); }
+        .carousel-author-info span.author-name { color: var(--text-main); font-weight: 700; }
+        .carousel-author-info span.author-role { color: var(--primary); font-size: 0.75rem; text-transform: uppercase; }
+        
+        .carousel-btn { background: #fff; border: 1px solid var(--border-color); color: var(--text-main); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .carousel-btn:hover { border-color: var(--primary); color: var(--primary); }
         .carousel-btn svg { width: 20px; height: 20px; stroke: currentColor; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-        .faq-section { padding: 80px 0 40px 0; }
+        
+        /* FAQ - Accordéon mis à jour */
         .faq-container { max-width: 800px; margin: 0 auto; }
         .faq-item { border-bottom: 1px solid var(--border-color); }
-        .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 30px 0; font-size: 1.2rem; font-family: var(--font-sans); color: #fff; cursor: pointer; display: flex; justify-content: space-between; align-items: center; transition: color 0.3s ease; }
-        .faq-question:hover { color: #a855f7; }
+        .faq-question { width: 100%; text-align: left; background: none; border: none; padding: 30px 0; font-size: 1.2rem; font-family: var(--font-sans); color: var(--text-main); cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 700; transition: color 0.3s ease; }
+        .faq-question:hover { color: var(--primary); }
         .faq-icon { width: 24px; height: 24px; position: relative; transition: transform 0.3s ease; flex-shrink: 0; }
-        .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background-color: #fff; transition: transform 0.3s ease; }
+        .faq-icon::before, .faq-icon::after { content: ''; position: absolute; background-color: var(--text-main); transition: transform 0.3s ease; }
         .faq-icon::before { top: 11px; left: 0; width: 24px; height: 2px; }
         .faq-icon::after { top: 0; left: 11px; width: 2px; height: 24px; }
         .faq-item.active .faq-icon::after { transform: rotate(90deg); }
         .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
         .faq-answer p { padding-bottom: 30px; color: var(--text-muted); line-height: 1.6; }
-        .final-cta-section { padding: 60px 0 100px 0; text-align: center; }
-        .final-cta-box { background: linear-gradient(145deg, rgba(20,20,20,1) 0%, rgba(10,10,10,1) 100%); border: 1px solid rgba(168, 85, 247, 0.4); border-radius: 24px; padding: 80px 40px; position: relative; overflow: hidden; max-width: 900px; margin: 0 auto; box-shadow: 0 20px 50px rgba(107, 33, 168, 0.15); }
-        .final-cta-box::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 60%; height: 2px; background: linear-gradient(90deg, transparent, #a855f7, transparent); }
-        .final-cta-box h2 { font-size: 2.8rem; margin-bottom: 20px; }
-        .final-cta-box p { color: var(--text-muted); font-size: 1.1rem; max-width: 600px; margin: 0 auto 40px auto; }
+        
+        /* Final CTA */
+        .final-cta-box { background: #fff; border: 1px solid var(--primary); border-radius: 24px; padding: 80px 40px; max-width: 900px; margin: 0 auto; box-shadow: 0 20px 50px var(--primary-glow); text-align: center; }
         
         /* =========================================
-           POP-UP MULTI-ÉTAPES (SETTER AUTOMATIQUE)
+           POP-UP MULTI-ÉTAPES (UX/UI PREMIUM)
            ========================================= */
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(10px); z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: opacity 0.3s ease, visibility 0.3s ease; }
+        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(250, 248, 245, 0.95); backdrop-filter: blur(10px); z-index: 9999; display: flex; justify-content: center; align-items: center; opacity: 0; visibility: hidden; transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .modal-overlay.active { opacity: 1; visibility: visible; }
-        .modal-content { background: linear-gradient(145deg, #151515, #0a0a0a); border: 1px solid rgba(168, 85, 247, 0.5); border-radius: 24px; width: 100%; max-width: 600px; padding: 40px; position: relative; transform: translateY(20px); transition: transform 0.4s ease; box-shadow: 0 20px 60px rgba(0,0,0,0.8), 0 0 30px rgba(168, 85, 247, 0.2); margin: 20px; max-height: 90vh; overflow-y: auto; scrollbar-width: none; }
-        .modal-content::-webkit-scrollbar { display: none; }
+        
+        .modal-content { background: #ffffff; border: 1px solid var(--border-color); border-radius: 24px; width: 100%; max-width: 650px; padding: 50px 40px; box-shadow: 0 20px 60px rgba(196, 164, 130, 0.15); max-height: 90vh; overflow-y: auto; position: relative; transform: translateY(20px); transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
         .modal-overlay.active .modal-content { transform: translateY(0); }
-        .close-modal { position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 28px; cursor: pointer; transition: color 0.3s; z-index: 10; }
-        .close-modal:hover { color: #fff; }
-        .progress-container { width: 100%; height: 4px; background: rgba(255,255,255,0.1); border-radius: 4px; margin-bottom: 30px; overflow: hidden; }
-        .progress-bar { height: 100%; background: linear-gradient(90deg, #a855f7, #38bdf8); width: 0%; transition: width 0.4s ease; }
-        .form-step { display: none; animation: fadeIn 0.4s ease; }
-        .form-step.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateX(10px); } to { opacity: 1; transform: translateX(0); } }
-        .form-step h3 { font-size: 1.5rem; margin-bottom: 15px; color: #fff; }
-        .form-step p.step-desc { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 25px; line-height: 1.5; }
+        .modal-content::-webkit-scrollbar { display: none; }
         
-        .radio-option { display: block; position: relative; margin-bottom: 12px; cursor: pointer; }
+        .close-modal { position: absolute; top: 20px; right: 20px; background: none; border: none; color: var(--text-muted); font-size: 28px; cursor: pointer; z-index: 10; transition: color 0.3s; }
+        .close-modal:hover { color: var(--text-main); }
+        
+        .progress-container { width: 100%; height: 6px; background: #f0f0f0; border-radius: 6px; margin-bottom: 40px; overflow: hidden; }
+        .progress-bar { height: 100%; background: var(--primary); width: 0%; transition: width 0.5s ease; border-radius: 6px; }
+        
+        /* Animation de glissement entre les étapes */
+        .form-step { display: none; opacity: 0; transform: translateX(20px); }
+        .form-step.active { display: block; animation: slideInStep 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+        @keyframes slideInStep { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+        
+        .form-step h3 { color: var(--text-main); font-family: var(--font-serif); font-size: 1.8rem; margin-bottom: 15px; }
+        .form-step p.step-desc { color: var(--text-muted); font-size: 1rem; margin-bottom: 30px; line-height: 1.6; }
+        
+        .radio-option { display: block; position: relative; margin-bottom: 15px; cursor: pointer; }
         .radio-option input { position: absolute; opacity: 0; cursor: pointer; }
-        .radio-card { display: block; padding: 14px 20px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-muted); transition: all 0.2s ease; }
-        .radio-option:hover .radio-card { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.2); }
-        .radio-option input:checked ~ .radio-card { background: rgba(168, 85, 247, 0.15); border-color: #a855f7; color: #fff; font-weight: 500; }
+        .radio-card { display: block; padding: 18px 24px; background: #fafafa; border: 1px solid #eaeaea; color: var(--text-muted); border-radius: 12px; transition: all 0.3s ease; font-size: 1.05rem; }
+        .radio-option:hover .radio-card { border-color: var(--primary); background: #fff; }
+        .radio-option input:checked ~ .radio-card { background: rgba(196, 164, 130, 0.1); border-color: var(--primary); color: var(--text-main); font-weight: 700; box-shadow: 0 4px 15px rgba(196, 164, 130, 0.1); transform: scale(1.01); }
         
-        .input-group { margin-bottom: 20px; }
-        .input-group label { display: block; margin-bottom: 8px; color: var(--text-muted); font-size: 0.9rem; }
-        .input-group input, .input-group textarea { width: 100%; padding: 14px 16px; background: rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; color: #fff; font-family: var(--font-sans); font-size: 1rem; transition: border-color 0.3s; }
-        .input-group input:focus, .input-group textarea:focus { outline: none; border-color: #a855f7; background: rgba(0,0,0,0.8); }
-        .input-group textarea { resize: vertical; min-height: 100px; }
+        .input-group { margin-bottom: 25px; }
+        .input-group label { display: block; margin-bottom: 10px; color: var(--text-main); font-weight: 700; font-size: 0.95rem; }
+        .input-group input, .input-group textarea { width: 100%; padding: 16px 20px; background: #fafafa; border: 1px solid #eaeaea; border-radius: 12px; color: var(--text-main); font-family: var(--font-sans); font-size: 1.05rem; transition: all 0.3s; }
+        .input-group input:focus, .input-group textarea:focus { outline: none; border-color: var(--primary); background: #fff; box-shadow: 0 0 0 4px rgba(196, 164, 130, 0.1); }
+        .input-group textarea { resize: vertical; min-height: 120px; }
         
-        .row-inputs { display: flex; gap: 15px; }
+        .row-inputs { display: flex; gap: 20px; }
         .row-inputs .input-group { flex: 1; }
 
-        .modal-nav { display: flex; justify-content: space-between; margin-top: 30px; align-items: center; }
-        .btn-prev { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 0.95rem; text-decoration: underline; }
-        .btn-prev:hover { color: #fff; }
-        .btn-next { padding: 14px 30px; border-radius: 30px; background: #fff; color: #000; font-weight: 600; border: none; cursor: pointer; transition: 0.3s; }
-        .btn-next:hover { box-shadow: 0 0 20px rgba(255,255,255,0.3); transform: translateY(-2px); }
+        .modal-nav { display: flex; justify-content: space-between; margin-top: 40px; align-items: center; }
+        .btn-prev { background: none; border: none; color: var(--text-muted); cursor: pointer; font-size: 1rem; font-weight: 600; transition: color 0.3s; }
+        .btn-prev:hover { color: var(--text-main); }
+        .btn-next { padding: 16px 36px; border-radius: 50px; background: var(--primary); color: #fff; font-weight: 700; font-size: 1rem; border: none; cursor: pointer; transition: all 0.3s; box-shadow: 0 10px 20px var(--primary-glow); }
+        .btn-next:hover { transform: translateY(-2px); box-shadow: 0 15px 25px var(--primary-glow); background: #b59573; }
+
+        /* Menu Mobile */
+        .mobile-menu-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: rgba(250, 248, 245, 0.98); backdrop-filter: blur(15px); z-index: 9998; display: flex; justify-content: center; align-items: center; opacity: 0; pointer-events: none; transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+        .mobile-menu-overlay.active { opacity: 1; pointer-events: auto; }
+        .close-menu-btn { position: absolute; top: 30px; right: 30px; background: none; border: none; color: var(--text-main); font-size: 3rem; cursor: pointer; transition: color 0.3s; z-index: 9999; }
+        .mobile-menu-nav { display: flex; flex-direction: column; align-items: center; gap: 2.5rem; text-align: center; }
+        .mobile-nav-link { color: var(--text-main); font-family: var(--font-serif); font-size: 2rem; text-decoration: none; transition: color 0.3s ease; }
+        .mobile-nav-link:hover { color: var(--primary); }
 
         .fade-in-up { animation: fadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; transform: translateY(30px); }
         .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
         @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; } .stats { gap: 40px 10px; padding: 40px 0; } .stat-item { min-width: 40%; } .stat-number { font-size: 2.2rem; } .stat-label { font-size: 0.75rem; }
-            .timeline-line-bg, .timeline-line-progress { left: 20px; } .timeline-item { padding-left: 60px; } .timeline-number { width: 40px; height: 40px; left: 0; font-size: 1rem; } .timeline-content { padding: 20px; }
-            .about-grid { grid-template-columns: 1fr; gap: 40px; } .about-content h2 { font-size: 2rem; } .premium-offer { padding: 40px 20px; } .btn-group { flex-direction: column; } .btn { width: 100%; text-align: center; }
-            .cards-grid { grid-template-columns: 1fr; } .carousel-card { flex: 0 0 280px; } .faq-question { font-size: 1.1rem; padding: 25px 0; } .final-cta-box { padding: 50px 20px; } .final-cta-box h2 { font-size: 2rem; }
-            .modal-content { padding: 30px 20px; } .form-step h3 { font-size: 1.3rem; } .row-inputs { flex-direction: column; gap: 0; }
+            .about-grid, .cards-grid, .row-inputs { grid-template-columns: 1fr; gap: 40px; }
+            .hero h1 { font-size: 2.2rem; }
+            .timeline-item { padding-left: 60px; }
+            .modal-content { padding: 40px 24px; margin: 15px; }
+            .stat-number { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -176,81 +214,185 @@
 
     <div class="container">
         <header class="fade-in-up">
-            <div class="logo">NOVALAB</div>
-            <div style="cursor: pointer;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            <div class="logo">LINA KADMIRI</div>
+            <div id="burger-btn" style="cursor: pointer;">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--text-main)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
             </div>
         </header>
 
         <section class="hero">
-            <div class="subtitle-top fade-in-up">Revenus digitaux durables & Liberté</div>
-            <h1 class="fade-in-up delay-1"><span>Construis ton <span class="serif-italic">empire digital</span></span><span>Monétise ton <span class="serif-italic">expertise</span></span><span>Crée ta <span class="serif-italic">liberté</span></span></h1>
-            <p class="fade-in-up delay-2">Avec méthode et exigence, j'accompagne les jeunes ambitieux à maîtriser l'e-commerce, l'UGC et les stratégies high-ticket pour bâtir une activité en ligne qui génère de vrais résultats.</p>
+            <div class="subtitle-top fade-in-up">Émancipation Digitale & Indépendance</div>
+            <h1 class="fade-in-up delay-1">
+                <span>Deviens la femme</span>
+                <span class="serif-italic">indépendante</span>
+                <span>que tu mérites d'être.</span>
+            </h1>
+            <p class="fade-in-up delay-2">Je t'accompagne à briser tes plafonds de verre, maîtriser la création de contenu et bâtir un business en ligne rentable au sein de l'écosystème NovaLab.</p>
             <div class="btn-group fade-in-up delay-3">
-                <button class="btn btn-primary open-modal-btn">Être accompagné</button>
-                <a href="#offres" class="btn btn-secondary">Voir les stratégies</a>
+                <button class="btn btn-primary open-modal-btn">Rejoindre l'aventure</button>
+                <a href="#offres" class="btn btn-secondary">Découvrir les stratégies</a>
             </div>
         </section>
 
         <section class="stats fade-in-up" id="stats-section">
-            <div class="stat-item"><div class="stat-number"><span class="counter" data-target="5">0</span></div><div class="stat-label">ans d'expertise sur les marchés digitaux</div></div>
-            <div class="stat-item"><div class="stat-number"><span>+</span><span class="counter" data-target="500">0</span><span>K</span></div><div class="stat-label">de CA réalisés</div></div>
-            <div class="stat-item"><div class="stat-number"><span>+</span><span class="counter" data-target="440">0</span></div><div class="stat-label">personnes accompagnées</div></div>
-            <div class="stat-item"><div class="stat-number"><span class="counter" data-target="100">0</span><span>%</span></div><div class="stat-label">orienté actions et rentabilité durable</div></div>
+            <div class="stat-item">
+                <div class="stat-number"><span class="counter" data-target="3">0</span></div>
+                <div class="stat-label">ans d'expérience</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number" style="font-size: 2.2rem; padding: 10px 0;"><span>Des dizaines</span></div>
+                <div class="stat-label">de femmes accompagnées</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number"><span class="counter" data-target="100">0</span><span>%</span></div>
+                <div class="stat-label">orientée actions & épanouissement</div>
+            </div>
         </section>
 
         <section id="parcours">
-            <div class="section-title"><span class="sur-titre">Mon histoire</span><h2>De la survie à <span class="serif-italic">l'accomplissement</span></h2></div>
+            <div class="section-title">
+                <span class="sur-titre">Mon histoire</span>
+                <h2>De l'impasse à <span class="serif-italic">l'accomplissement</span></h2>
+            </div>
             <div class="timeline-container">
                 <div class="timeline-line-bg"></div><div class="timeline-line-progress" id="timeline-progress"></div>
-                <div class="timeline-item timeline-item-anim"><div class="timeline-number">1</div><div class="timeline-content"><div class="timeline-year">2021</div><h3>Le commencement</h3><p>Etudiant non-boursier en quête d'un business durable pour sortir de la précarité étudiante et de la survie.</p></div></div>
-                <div class="timeline-item timeline-item-anim"><div class="timeline-number">2</div><div class="timeline-content"><div class="timeline-year">2022</div><h3>La découverte</h3><p>Je tombe sur le monde du business en ligne et décide de "tester" car je n'avais plus rien à perdre et tout à gagner.</p></div></div>
-                <div class="timeline-item timeline-item-anim"><div class="timeline-number">3</div><div class="timeline-content"><div class="timeline-year">2023</div><h3>Remise en question</h3><p>Arnaques, trahisons, dettes, galères personnelles, etc. Je doute de moi malgré que je commence à générer de l'argent.</p></div></div>
-                <div class="timeline-item timeline-item-anim"><div class="timeline-number">4</div><div class="timeline-content"><div class="timeline-year">2024</div><h3>La révélation</h3><p>Après de dures années je deviens réellement indépendant grâce au business en ligne et je voyage partout.</p></div></div>
-                <div class="timeline-item timeline-item-anim"><div class="timeline-number">5</div><div class="timeline-content"><div class="timeline-year">2025</div><h3>L'accomplissement</h3><p>Je crée un écosystème qui aide d'autres jeunes à se développer et poursuivre leurs rêves et objectifs les plus fous.</p></div></div>
+                
+                <div class="timeline-item timeline-item-anim">
+                    <div class="timeline-number">1</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Les barrières</div>
+                        <h3>Le mur du salariat</h3>
+                        <p>Jeune et pleine d'ambition, je me heurte à une réalité brutale : la difficulté de trouver et garder un emploi à cause de mon voile. Mes compétences sont ignorées au profit de mon apparence.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-item-anim">
+                    <div class="timeline-number">2</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Le déclic</div>
+                        <h3>Le choix de m'imposer</h3>
+                        <p>Au lieu d'essayer de rentrer dans une case qui ne veut pas de moi, je décide de créer la mienne. Je comprends que le business en ligne ne juge pas l'apparence, mais les résultats.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-item-anim">
+                    <div class="timeline-number">3</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">La rencontre</div>
+                        <h3>L'écosystème NovaLab</h3>
+                        <p>Je découvre NovaLab. Je me forme intensément au digital, et je me spécialise rapidement dans la création de contenu organique (UGC) et l'acquisition.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-item-anim">
+                    <div class="timeline-number">4</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">L'indépendance</div>
+                        <h3>La liberté assumée</h3>
+                        <p>Les stratégies payent. Je génère mes propres revenus, je voyage, et je deviens géographiquement et financièrement libre, sans jamais compromettre mes valeurs.</p>
+                    </div>
+                </div>
+                <div class="timeline-item timeline-item-anim">
+                    <div class="timeline-number">5</div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">La mission</div>
+                        <h3>Transmettre aux autres</h3>
+                        <p>Aujourd'hui, je suis associée au sein de NovaLab pour aider d'autres femmes à contourner les discriminations et à prendre le contrôle de leur vie financière.</p>
+                    </div>
+                </div>
             </div>
         </section>
 
         <section id="about">
             <div class="about-grid">
-                <div class="about-image"><span style="color: var(--text-muted); font-size: 0.9rem; text-align: center; padding: 20px;">[Insère ta photo ici]<br><br><small>Remplace ce bloc par une balise &lt;img&gt;</small></span></div>
+                <div class="about-image">
+                    <img src="photo-lina.webp" alt="Lina Kadmiri" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
                 <div class="about-content">
-                    <span class="sur-titre">Derrière NovaLab</span><h2>Moi, c'est <span class="serif-italic">Yanis Benali</span>.</h2>
-                    <p>Il y a quelques années, j'étais exactement là où tu es aujourd'hui : plein d'ambition, mais noyé dans un océan d'informations contradictoires. J'ai testé, j'ai fait des erreurs, et j'ai finalement fini par craquer les codes de l'écosystème digital.</p>
-                    <p>J'ai compris qu'il ne suffisait pas d'avoir une bonne idée. Il faut <strong>une infrastructure technique, un positionnement affûté et une stratégie d'acquisition millimétrée</strong>.</p>
-                    <p>Ma mission avec NovaLab est claire : te faire gagner les années que j'ai perdues. Transmettre des systèmes prouvés aux jeunes qui ont faim de réussite et de liberté financière. Pas de fausses promesses, juste de l'exigence, de la méthode et des résultats.</p>
+                    <span class="sur-titre">Qui suis-je ?</span>
+                    <h2>Moi, c'est <span class="serif-italic">Lina Kadmiri</span>.</h2>
+                    <p>On m'a souvent fermé des portes à cause de mes choix personnels et de mon voile. J'ai connu le doute, les refus et le sentiment d'injustice face au monde du travail classique.</p>
+                    <p>En tant qu'experte en création de contenu au sein de l'écosystème NovaLab, j'ai fini par craquer les codes de la visibilité en ligne. J'ai compris que le digital était le plus grand levier d'égalité : ton audience se moque de qui tu es, elle s'intéresse à la valeur que tu apportes.</p>
+                    <p>Ma mission est simple : t'aider à te libérer des contraintes du salariat. Te transmettre nos méthodes pour que tu puisses générer tes propres revenus, de chez toi ou de l'autre bout du monde. Entre femmes ambitieuses, on s'élève ensemble.</p>
                 </div>
             </div>
         </section>
 
         <section id="offres">
-            <div class="section-title"><span class="sur-titre">Mes expertises</span><h2>Entre stratégie, visibilité<br>et <span class="serif-italic">rentabilité</span></h2></div>
-            <div class="cards-grid">
-                <div class="card"><div class="card-top"><span class="card-tag">Visibilité & Trafic</span><div class="chrome-icon"></div></div><h3>Marketing Digital & <span class="serif-italic">UGC</span></h3><p>L'art d'attirer l'attention sans dépenser en publicité. Maîtrise des algorithmes TikTok et Instagram, création de contenu viral et utilisation stratégique de l'User Generated Content.</p></div>
-                <div class="card"><div class="card-top"><span class="card-tag">Vente & Logistique</span><div class="chrome-icon"></div></div><h3>Écosystème <span class="serif-italic">E-commerce</span></h3><p>De la sélection d'un produit gagnant à la création d'une boutique optimisée. Inclus la négociation avec les agents et l'accès à un réseau de fournisseurs certifiés haut de gamme.</p></div>
-                <div class="card"><div class="card-top"><span class="card-tag">Effet de levier</span><div class="chrome-icon"></div></div><h3>Partenariat & <span class="serif-italic">Affiliation</span></h3><p>Pas encore de produit ? Intègre l'écosystème en tant que partenaire NovaLab. Revends des produits et services à forte valeur ajoutée déjà validés par le marché pour générer tes revenus.</p></div>
-                <div class="card"><div class="card-top"><span class="card-tag">Réseau & Évolution</span><div class="chrome-icon"></div></div><h3>Communauté & <span class="serif-italic">Masterminds</span></h3><p>Ton réseau détermine ta valeur. Rejoins un cercle de jeunes ambitieux où l'entraide est la norme. Participe à nos événements exclusifs et propulse ton mindset vers la réussite.</p></div>
+            <div class="section-title">
+                <span class="sur-titre">Mes expertises</span>
+                <h2>Prends le contrôle de <span class="serif-italic">ton business</span></h2>
             </div>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-top"><span class="card-tag">Visibilité & UGC</span><div class="chrome-icon"></div></div>
+                    <h3>Création de Contenu & <span class="serif-italic">Viralité</span></h3>
+                    <p>Ma spécialité absolue. Apprends à maîtriser les algorithmes, créer du contenu magnétique et générer de l'attention (UGC) sans jamais dépenser le moindre euro en publicité.</p>
+                </div>
+                <div class="card">
+                    <div class="card-top"><span class="card-tag">Vente & Logistique</span><div class="chrome-icon"></div></div>
+                    <h3>Boutiques <span class="serif-italic">E-commerce</span></h3>
+                    <p>De l'idée à la vente. Je t'accompagne avec NovaLab sur la sélection de produits gagnants et la mise en place d'une boutique optimisée pour convertir ta future audience.</p>
+                </div>
+                <div class="card">
+                    <div class="card-top"><span class="card-tag">Effet de levier</span><div class="chrome-icon"></div></div>
+                    <h3>Revenus <span class="serif-italic">Passifs</span></h3>
+                    <p>Découvre la puissance de l'affiliation. Vends des produits haut de gamme déjà créés par notre écosystème et génère des commissions importantes dès tes premières semaines.</p>
+                </div>
+                <div class="card">
+                    <div class="card-top"><span class="card-tag">Sororité & Mindset</span><div class="chrome-icon"></div></div>
+                    <h3>Cercle de <span class="serif-italic">Ladyboss</span></h3>
+                    <p>L'entourage est la clé de la réussite. Rejoins un réseau de femmes déterminées, participe à nos masterclass et évolue dans un cadre sain, motivant et aligné avec tes valeurs.</p>
+                </div>
+            </div>
+            
             <div class="premium-offer">
                 <div class="premium-offer-content">
-                    <span class="card-tag" style="background: rgba(168, 85, 247, 0.15); border-color: rgba(168, 85, 247, 0.4); color: #c084fc;">COMPLET • PROCHAINE SESSION EN APPROCHE</span>
-                    <h3>L'Incubateur <span class="serif-italic">NovaLab</span></h3>
-                    <p style="color: var(--text-muted); max-width: 600px; margin-top: 15px;">L'accompagnement immersif pour construire les vraies fondations de ton business : positionnement, branding, architecture de tes offres high-ticket et tunnel de vente.</p>
-                    <ul class="offer-list"><li>Sessions stratégiques approfondies 1:1</li><li>Audit complet de ton positionnement</li><li>Création d'offres irrésistibles & High-Ticket</li><li>Système d'acquisition et conversion automatisé</li><li>Accès exclusif à la communauté privée NovaLab</li></ul>
-                    <button class="btn btn-primary open-modal-btn">Candidater au programme</button>
+                    <span class="card-tag" style="background: rgba(196, 164, 130, 0.15); border-color: var(--primary);">PROCHAINE SESSION EN APPROCHE</span>
+                    <h3 style="margin-top: 15px; font-size: 2.2rem;">L'Incubateur <span class="serif-italic">NovaLab</span></h3>
+                    <p style="color: var(--text-muted); max-width: 600px; margin-top: 15px;">L'accompagnement immersif pour construire les fondations de ta liberté : personal branding, stratégie de contenu, et mise en place de tes tunnels de vente.</p>
+                    <ul class="offer-list">
+                        <li>Mentoring stratégique de A à Z</li>
+                        <li>Formation experte sur l'UGC et les réseaux</li>
+                        <li>Création de ton propre système de vente</li>
+                        <li>Accès exclusif à la communauté privée et à notre réseau</li>
+                    </ul>
+                    <button class="btn btn-primary open-modal-btn">Postuler au programme</button>
                 </div>
             </div>
         </section>
 
+        <section id="instagram" class="instagram-section">
+            <div class="section-title fade-in-up">
+                <span class="sur-titre">Mon Univers</span>
+                <h2>Découvre notre <span class="serif-italic">quotidien</span></h2>
+                <p style="color: var(--text-muted); margin-top: 15px;">Plonge dans mes astuces contenu et découvre nos réussites en action.</p>
+            </div>
+            
+            <div class="ig-grid fade-in-up delay-1">
+                <div class="ig-post-wrapper">
+                    <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; padding: 40px 0;">[Colle le code d'intégration Instagram du Post 1 ici]</p>
+                    </div>
+                <div class="ig-post-wrapper">
+                    <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; padding: 40px 0;">[Colle le code d'intégration Instagram du Post 2 ici]</p>
+                    </div>
+                <div class="ig-post-wrapper">
+                    <p style="color: var(--text-muted); font-size: 0.9rem; text-align: center; padding: 40px 0;">[Colle le code d'intégration Instagram du Post 3 ici]</p>
+                    </div>
+            </div>
+        </section>
+
         <section id="temoignages" class="testimonials-section">
-            <div class="section-title fade-in-up"><span class="sur-titre">Preuve sociale</span><h2>Ils ont fait confiance à <span class="serif-italic">NovaLab</span></h2></div>
+            <div class="section-title fade-in-up"><span class="sur-titre">Elles ont osé</span><h2>Elles se sont fait confiance avec <span class="serif-italic">NovaLab</span></h2></div>
             <div class="carousel-wrapper fade-in-up delay-1">
                 <div class="carousel-track" id="testimonial-track">
-                    <div class="carousel-card"><div class="card-header"><div class="quote-icon">"</div><div class="stars-container"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div></div><p>"Étudiante avec peu de moyens, je cherchais un complément de revenu. Grâce à l'accompagnement, j'ai lancé le marketing digital et aujourd'hui je génère mes premiers revenus en parallèle de mes études. Ça a changé ma vision."</p><div class="carousel-author-wrapper"><div class="author-avatar">Img</div><div class="carousel-author-info"><span class="author-name">Lina K.</span><span class="author-role">Étudiante & Ladyboss</span></div></div></div>
-                    <div class="carousel-card"><div class="card-header"><div class="quote-icon">"</div><div class="stars-container"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div></div><p>"J'étais étudiant et je voulais plus. J'a découvert le monde de la finance et avec le suivi et la méthode, j'ai enfin compris et aujourd'hui je suis rentable. C'est un vrai tournant pour moi."</p><div class="carousel-author-wrapper"><div class="author-avatar">Img</div><div class="carousel-author-info"><span class="author-name">Rayan C.</span><span class="author-role">Trader/Investisseur</span></div></div></div>
-                    <div class="carousel-card"><div class="card-header"><div class="quote-icon">"</div><div class="stars-container"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div></div><p>"Entre les études et le manque de repères, j'étais perdu. Aujourd'hui, je génère des revenus chaque mois grâce à l'UGC et au marketing digital. J'ai enfin un système qui fonctionne grâce à NovaLab."</p><div class="carousel-author-wrapper"><div class="author-avatar">Img</div><div class="carousel-author-info"><span class="author-name">Aladdin A.</span><span class="author-role">Créateur</span></div></div></div>
-                    <div class="carousel-card"><div class="card-header"><div class="quote-icon">"</div><div class="stars-container"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div></div><p>"Étudiante, j'ai lancé mon agence de graphisme et en parallèle je génère des revenus grâce au marketing digital avec les produits de l'écosystème. J'ai plusieurs sources de revenus maintenant."</p><div class="carousel-author-wrapper"><div class="author-avatar">Img</div><div class="carousel-author-info"><span class="author-name">Shola N.</span><span class="author-role">Étudiante & Ladyboss</span></div></div></div>
-                    <div class="carousel-card"><div class="card-header"><div class="quote-icon">"</div><div class="stars-container"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div></div><p>"Déscolarisé, je ne voyais pas d'issue. Aujourd'hui, je suis devenu partenaire NovaLab et je génère jusqu'à 3 000€/mois grâce au digital et à l'écosystème. C'est une transformation totale. Merci Yanis."</p><div class="carousel-author-wrapper"><div class="author-avatar">Img</div><div class="carousel-author-info"><span class="author-name">Oussama C.</span><span class="author-role">Entrepreneur</span></div></div></div>
+                    <div class="carousel-card">
+                        <div class="card-header"><div class="quote-icon">"</div><div class="stars-container"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div></div>
+                        <p>"Étudiante avec peu de moyens, je cherchais un complément. Grâce à Lina et NovaLab, j'ai lancé le marketing digital et aujourd'hui je génère mes premiers revenus en parallèle de mes études. Ça a changé ma vision des choses."</p>
+                        <div class="carousel-author-wrapper"><div class="author-avatar"><img src="photo-temoin1.webp" alt="Témoin 1"></div><div class="carousel-author-info"><span class="author-name">Sarah M.</span><span class="author-role">Étudiante & Créatrice</span></div></div>
+                    </div>
+                    <div class="carousel-card">
+                        <div class="card-header"><div class="quote-icon">"</div><div class="stars-container"><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div></div>
+                        <p>"Je ne trouvais pas de travail à cause de mon voile. L'approche de Lina m'a rassurée. J'ai lancé ma boutique E-commerce avec l'écosystème, et je suis enfin mon propre patron !"</p>
+                        <div class="carousel-author-wrapper"><div class="author-avatar">M</div><div class="carousel-author-info"><span class="author-name">Meryem C.</span><span class="author-role">Entrepreneuse</span></div></div>
+                    </div>
                 </div>
                 <div class="carousel-controls">
                     <button class="carousel-btn" id="prev-btn" aria-label="Précédent"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
@@ -262,67 +404,85 @@
         <section id="faq" class="faq-section fade-in-up">
             <div class="section-title"><span class="sur-titre">Avant de commencer</span><h2>Lève tes doutes.<br><span class="serif-italic">Passe à l'action.</span></h2></div>
             <div class="faq-container">
-                <div class="faq-item"><button class="faq-question">Je n'ai pas le temps, je suis étudiant ou salarié.<span class="faq-icon"></span></button><div class="faq-answer"><p>J'ai moi-même démarré en étant étudiant. L'écosystème NovaLab est pensé pour s'adapter à ton emploi du temps. Que tu sois salarié, étudiant ou déjà indépendant, nos stratégies sont conçues pour être appliquées à ton rythme.</p></div></div>
-                <div class="faq-item"><button class="faq-question">Je n'ai pas un gros budget pour me lancer.<span class="faq-icon"></span></button><div class="faq-answer"><p>Nous avons des solutions pour chaque étape de ton évolution. Nos offres démarrent à partir d'une centaine d'euros, avec des ressources adaptées. Tu peux commencer petit et réinvestir tes premiers bénéfices pour aller plus loin.</p></div></div>
-                <div class="faq-item"><button class="faq-question">Comment être sûr que ce n'est pas une arnaque ?<span class="faq-icon"></span></button><div class="faq-answer"><p>Notre système est éprouvé depuis plusieurs années. Au sein de NovaLab, tu seras encadré exclusivement par des éducateurs experts et certifiés dans leur domaine avec une transparence totale sur les stratégies.</p></div></div>
-                <div class="faq-item"><button class="faq-question">Est-ce éthique et compatible avec mes croyances ?<span class="faq-icon"></span></button><div class="faq-answer"><p>Absolument. Nous mettons un point d'honneur à développer des modèles d'affaires 100% éthiques. Nos méthodes sont saines, transparentes et respectueuses de toutes les communautés (compatibles avec le commerce éthique musulman).</p></div></div>
-                <div class="faq-item"><button class="faq-question">J'ai peur de ne pas y arriver...<span class="faq-icon"></span></button><div class="faq-answer"><p>Si tu n'essaies pas, tu as la garantie absolue de stagner. Pour obtenir des résultats différents, tu dois poser des actions différentes. Le vrai risque n'est pas d'échouer en essayant, c'est de rester là où tu es aujourd'hui dans 5 ans.</p></div></div>
+                <div class="faq-item">
+                    <button class="faq-question">Je n'y connais rien en informatique, est-ce pour moi ?<span class="faq-icon"></span></button>
+                    <div class="faq-answer"><p>Absolument. Je suis passée par là. L'écosystème NovaLab est pensé pour te prendre par la main, des bases jusqu'aux stratégies avancées. Tu n'as pas besoin de compétences techniques préalables.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Je n'ai pas un gros budget pour me lancer.<span class="faq-icon"></span></button>
+                    <div class="faq-answer"><p>Nous avons des solutions pour chaque étape. Tu peux commencer petit, générer tes premiers revenus avec l'affiliation ou l'UGC, et réinvestir tes bénéfices pour faire grandir ton activité.</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Est-ce éthique et compatible avec mes croyances ?<span class="faq-icon"></span></button>
+                    <div class="faq-answer"><p>C'est exactement la raison pour laquelle je suis là. Nos méthodes sont saines, transparentes et totalement respectueuses de nos valeurs (compatibles avec le commerce éthique).</p></div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">J'ai peur de ne pas avoir assez de temps...<span class="faq-icon"></span></button>
+                    <div class="faq-answer"><p>Tu peux avancer à ton propre rythme, que tu sois étudiante, salariée ou maman. Quelques heures bien optimisées par semaine suffisent pour commencer à construire tes fondations.</p></div>
+                </div>
             </div>
         </section>
 
         <section class="final-cta-section fade-in-up">
             <div class="final-cta-box">
-                <h2>Prêt à bâtir ton <span class="serif-italic">empire digital</span> ?</h2>
-                <p>Rejoins des dizaines de jeunes ambitieux qui ont déjà transformé leur quotidien grâce à des méthodes concrètes, éthiques et rentables.</p>
-                <button class="btn btn-primary open-modal-btn" style="font-size: 1.1rem; padding: 20px 40px; margin-top: 10px;">Candidater à l'Incubateur</button>
+                <h2>Prête à prendre ta <span class="serif-italic">revanche</span> ?</h2>
+                <p>Rejoins des dizaines de femmes ambitieuses qui ont déjà transformé leur quotidien grâce à des méthodes concrètes et adaptées à nos réalités.</p>
+                <button class="btn btn-primary open-modal-btn" style="font-size: 1.1rem; padding: 20px 40px; margin-top: 10px;">Postuler à l'Incubateur</button>
             </div>
         </section>
 
         <footer style="text-align: center; padding: 50px 0; border-top: 1px solid var(--border-color); color: var(--text-muted); font-size: 0.85rem;">
-            <p>© 2026 NovaLab - Yanis Benali. Tous droits réservés.</p>
+            <p>© 2026 NovaLab - Lina Kadmiri. Tous droits réservés.</p>
         </footer>
     </div>
 
-    <!-- LE MODAL POP-UP (SETTER AUTOMATISÉ 6 ÉTAPES) -->
+    <div class="mobile-menu-overlay" id="mobile-menu">
+        <button class="close-menu-btn" id="close-menu-btn-hamburger">&times;</button>
+        <nav class="mobile-menu-nav">
+            <a href="#about" class="mobile-nav-link">Mon histoire</a>
+            <a href="#offres" class="mobile-nav-link">Mes expertises</a>
+            <a href="#instagram" class="mobile-nav-link">Mon Univers</a>
+            <a href="#faq" class="mobile-nav-link">FAQ</a>
+            <button class="btn btn-primary open-modal-btn" style="margin-top: 20px;">Candidater</button>
+        </nav>
+    </div>
+
     <div class="modal-overlay" id="application-modal">
         <div class="modal-content">
             <button class="close-modal" id="close-modal-btn">&times;</button>
             <div class="progress-container"><div class="progress-bar" id="modal-progress"></div></div>
 
-            <!-- Etape 0: Introduction -->
             <div class="form-step active" data-step="0">
-                <span class="sur-titre">Candidature NovaLab</span>
-                <h3>Nous ne travaillons qu'avec les meilleurs.</h3>
-                <p class="step-desc">L'Incubateur NovaLab n'est pas pour tout le monde. Nous sélectionnons uniquement les profils les plus déterminés et prêts à passer à l'action.<br><br>Ce questionnaire de <strong>2 minutes maximum</strong> nous permet de cerner ta situation et de voir si nous pouvons réellement t'aider à atteindre tes objectifs. Prends le temps d'y répondre avec honnêteté.</p>
+                <span class="sur-titre">Candidature</span>
+                <h3>Prête à changer de vie ?</h3>
+                <p class="step-desc">L'Incubateur NovaLab demande de l'implication. Ce questionnaire de <strong>2 minutes</strong> me permet de cerner ta situation et de voir si je peux réellement t'aider à atteindre tes objectifs.</p>
                 <div class="modal-nav">
                     <span></span>
-                    <button class="btn-next" onclick="nextStep(0)">Commencer l'évaluation &rarr;</button>
+                    <button class="btn-next btn-primary" onclick="nextStep(0)">Commencer l'évaluation &rarr;</button>
                 </div>
             </div>
 
-            <!-- Etape 1: Contact -->
             <div class="form-step" data-step="1">
-                <h3>Dis-nous en plus sur toi</h3>
+                <h3>Faisons connaissance</h3>
                 <div class="row-inputs">
-                    <div class="input-group"><label>Ton Prénom</label><input type="text" placeholder="Ex: Rayan" required></div>
-                    <div class="input-group"><label>Ton Nom</label><input type="text" placeholder="Ex: Benali" required></div>
+                    <div class="input-group"><label>Ton Prénom</label><input type="text" placeholder="Ex: Inès" required></div>
+                    <div class="input-group"><label>Ton Nom</label><input type="text" placeholder="Ex: Kadmiri" required></div>
                 </div>
                 <div class="input-group"><label>Ton Email</label><input type="email" placeholder="contact@email.com" required></div>
                 <div class="row-inputs">
                     <div class="input-group"><label>Numéro WhatsApp (Obligatoire)</label><input type="tel" placeholder="+33 6 12 34 56 78" required></div>
-                    <div class="input-group"><label>Pseudo Instagram (Optionnel)</label><input type="text" placeholder="@ton_pseudo"></div>
+                    <div class="input-group"><label>Pseudo Instagram</label><input type="text" placeholder="@ton_pseudo"></div>
                 </div>
                 <div class="modal-nav">
                     <button class="btn-prev" onclick="prevStep(1)">&larr; Retour</button>
-                    <button class="btn-next" onclick="nextStep(1)">Continuer &rarr;</button>
+                    <button class="btn-next btn-primary" onclick="nextStep(1)">Continuer &rarr;</button>
                 </div>
             </div>
 
-            <!-- Etape 2: Situation et Age -->
             <div class="form-step" data-step="2">
-                <h3>Ta situation actuelle</h3>
+                <h3>Ta situation</h3>
                 <div style="margin-bottom: 25px;">
-                    <label style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px; display: block;">Dans quelle tranche d'âge es-tu ?</label>
+                    <label style="color: var(--text-main); font-weight: 700; margin-bottom: 10px; display: block;">Dans quelle tranche d'âge es-tu ?</label>
                     <label class="radio-option"><input type="radio" name="age" value="-18"><span class="radio-card">Moins de 18 ans</span></label>
                     <label class="radio-option"><input type="radio" name="age" value="18-24"><span class="radio-card">18 - 24 ans</span></label>
                     <label class="radio-option"><input type="radio" name="age" value="25-34"><span class="radio-card">25 - 34 ans</span></label>
@@ -330,228 +490,225 @@
                 </div>
                 <div class="input-group">
                     <label>Que fais-tu dans la vie actuellement ?</label>
-                    <textarea placeholder="Ex: Je suis étudiant en BTS, je travaille à côté au McDo..." required></textarea>
+                    <textarea placeholder="Ex: Je suis étudiante, ou je cherche du travail mais c'est bloqué..." required></textarea>
                 </div>
                 <div class="modal-nav">
                     <button class="btn-prev" onclick="prevStep(2)">&larr; Retour</button>
-                    <button class="btn-next" onclick="nextStep(2)">Continuer &rarr;</button>
+                    <button class="btn-next btn-primary" onclick="nextStep(2)">Continuer &rarr;</button>
                 </div>
             </div>
 
-            <!-- Etape 3: Niveau Business -->
             <div class="form-step" data-step="3">
-                <h3>Ton niveau en business</h3>
-                <p class="step-desc">Où en es-tu concrètement aujourd'hui ?</p>
-                <label class="radio-option"><input type="radio" name="niveau" value="debutant"><span class="radio-card">Débutant (Je pars de zéro, je n'ai pas de projet)</span></label>
-                <label class="radio-option"><input type="radio" name="niveau" value="initie"><span class="radio-card">Initié (J'ai déjà testé des choses sans grand succès)</span></label>
-                <label class="radio-option"><input type="radio" name="niveau" value="intermediaire"><span class="radio-card">Intermédiaire (Je génère mes premiers revenus)</span></label>
-                <label class="radio-option"><input type="radio" name="niveau" value="avance"><span class="radio-card">Avancé (J'ai un projet qui tourne, je cherche à scaler)</span></label>
+                <h3>Ton expérience en business</h3>
+                <label class="radio-option"><input type="radio" name="niveau" value="debutant"><span class="radio-card">Débutante (Je pars de zéro)</span></label>
+                <label class="radio-option"><input type="radio" name="niveau" value="initie"><span class="radio-card">Initiée (J'ai déjà testé sans succès)</span></label>
+                <label class="radio-option"><input type="radio" name="niveau" value="intermediaire"><span class="radio-card">Intermédiaire (Premiers revenus)</span></label>
+                <label class="radio-option"><input type="radio" name="niveau" value="avance"><span class="radio-card">Avancée (Je cherche à scaler)</span></label>
                 <div class="modal-nav">
                     <button class="btn-prev" onclick="prevStep(3)">&larr; Retour</button>
-                    <button class="btn-next" onclick="nextStep(3)">Continuer &rarr;</button>
+                    <button class="btn-next btn-primary" onclick="nextStep(3)">Continuer &rarr;</button>
                 </div>
             </div>
 
-            <!-- Etape 4: Mindset et Objectifs -->
             <div class="form-step" data-step="4">
                 <h3>Ta vision & Tes blocages</h3>
                 <div class="input-group">
-                    <label>Pourquoi penses-tu que c'est le moment de passer à la vitesse supérieure ?</label>
-                    <textarea placeholder="Ex: J'en ai marre de ma situation actuelle, je veux mon indépendance..." required></textarea>
+                    <label>Pourquoi ressens-tu le besoin de te lancer maintenant ?</label>
+                    <textarea placeholder="Ex: J'en ai marre de ma situation actuelle, je veux ma liberté financière..." required></textarea>
                 </div>
                 <div class="input-group">
                     <label>Qu'est-ce qu'il te manque aujourd'hui pour construire/lancer ton projet ?</label>
-                    <textarea placeholder="Ex: Il me manque une stratégie claire, un accompagnement, un réseau..." required></textarea>
+                    <textarea placeholder="Ex: Il me manque une stratégie claire, un accompagnement bienveillant, un réseau..." required></textarea>
                 </div>
                 <div class="input-group">
                     <label>Quel est ton objectif exact sur les 90 prochains jours avec nous ?</label>
-                    <textarea placeholder="Ex: Atteindre 2000€/mois net et quitter mon job étudiant." required></textarea>
+                    <textarea placeholder="Ex: Atteindre 2000€/mois net et gagner en indépendance." required></textarea>
                 </div>
                 <div class="modal-nav">
                     <button class="btn-prev" onclick="prevStep(4)">&larr; Retour</button>
-                    <button class="btn-next" onclick="nextStep(4)">Continuer &rarr;</button>
+                    <button class="btn-next btn-primary" onclick="nextStep(4)">Continuer &rarr;</button>
                 </div>
             </div>
 
-            <!-- Etape 5: Finances (Finale) -->
             <div class="form-step" data-step="5">
                 <h3>Tes ressources</h3>
-                <p class="step-desc" style="font-size: 0.85rem; color: #a855f7;">💡 Aucune réponse ne te disqualifiera. Nous voulons juste cerner ton profil pour te proposer la solution la plus adaptée.</p>
+                <p class="step-desc" style="font-size: 0.85rem; color: var(--primary);">💡 Aucune réponse ne te disqualifiera. Je veux juste cerner ton profil pour te proposer l'accompagnement le plus adapté.</p>
                 
                 <div style="margin-bottom: 25px;">
-                    <label style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px; display: block;">Quel est ton capital financier / Revenu net mensuel ?</label>
+                    <label style="color: var(--text-main); font-weight: 700; margin-bottom: 10px; display: block;">Quel est ton revenu net mensuel ?</label>
                     <label class="radio-option"><input type="radio" name="revenu" value="-1000"><span class="radio-card">Moins de 1 000 € / mois</span></label>
-                    <label class="radio-option"><input type="radio" name="revenu" value="1000-2000"><span class="radio-card">Entre 1 000 € et 2 000 € / mois</span></label>
-                    <label class="radio-option"><input type="radio" name="revenu" value="2000-4000"><span class="radio-card">Entre 2 000 € et 4 000 € / mois</span></label>
-                    <label class="radio-option"><input type="radio" name="revenu" value="4000+"><span class="radio-card">Plus de 4 000 € / mois</span></label>
+                    <label class="radio-option"><input type="radio" name="revenu" value="1000-2000"><span class="radio-card">Entre 1 000 € et 2 000 €</span></label>
+                    <label class="radio-option"><input type="radio" name="revenu" value="2000-4000"><span class="radio-card">Entre 2 000 € et 4 000 €</span></label>
+                    <label class="radio-option"><input type="radio" name="revenu" value="4000+"><span class="radio-card">Plus de 4 000 €</span></label>
                 </div>
-
                 <div style="margin-bottom: 25px;">
-                    <label style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 10px; display: block;">Quelle est ta capacité d'investissement réel pour lancer ton projet dès maintenant ?</label>
+                    <label style="color: var(--text-main); font-weight: 700; margin-bottom: 10px; display: block;">Quelle est ta capacité d'investissement pour te lancer ?</label>
                     <label class="radio-option"><input type="radio" name="investissement" value="-200"><span class="radio-card">Moins de 200 €</span></label>
                     <label class="radio-option"><input type="radio" name="investissement" value="200-500"><span class="radio-card">Entre 200 € et 500 €</span></label>
                     <label class="radio-option"><input type="radio" name="investissement" value="500-1000"><span class="radio-card">Entre 500 € et 1 000 €</span></label>
                     <label class="radio-option"><input type="radio" name="investissement" value="1000+"><span class="radio-card">Plus de 1 000 €</span></label>
                 </div>
-
                 <div class="modal-nav">
                     <button class="btn-prev" onclick="prevStep(5)">&larr; Retour</button>
-                    <button class="btn-next" onclick="submitForm()" style="background: #a855f7; color: #fff;">Envoyer ma candidature</button>
+                    <button class="btn-next btn-primary" onclick="submitForm()">Envoyer ma candidature</button>
                 </div>
             </div>
-
         </div>
     </div>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // Stats, Timeline, Carousel, FAQ 
+            // GÉNÉRATION DES ÉTOILES SCINTILLANTES
+            const generateStars = () => {
+                const starsContainer = document.createElement('div');
+                starsContainer.className = 'stars-container';
+                document.body.prepend(starsContainer);
+
+                const numStars = 60; // Nombre d'étoiles pour un effet délicat
+                for (let i = 0; i < numStars; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    
+                    const size = Math.random() * 2 + 1; // Entre 1px et 3px
+                    star.style.width = `${size}px`;
+                    star.style.height = `${size}px`;
+                    
+                    star.style.left = `${Math.random() * 100}vw`;
+                    star.style.top = `${Math.random() * 100}vh`;
+                    
+                    const duration = Math.random() * 4 + 3; // Entre 3s et 7s
+                    const delay = Math.random() * 5; // Entre 0s et 5s
+                    
+                    star.style.animationDuration = `${duration}s`;
+                    star.style.animationDelay = `${delay}s`;
+                    
+                    starsContainer.appendChild(star);
+                }
+            };
+            generateStars();
+
+            // COMPTEURS STATS
             const counters = document.querySelectorAll('.counter'); const statsSection = document.getElementById('stats-section'); const speed = 40; 
             const animateCounters = () => { counters.forEach(c => { const updateCount = () => { const t = +c.getAttribute('data-target'); const count = +c.innerText; const inc = t / speed; if (count < t) { c.innerText = Math.ceil(count + inc); setTimeout(updateCount, 40); } else { c.innerText = t; } }; updateCount(); }); };
             const statsObserver = new IntersectionObserver((entries, obs) => { entries.forEach(e => { if (e.isIntersecting) { animateCounters(); obs.unobserve(e.target); } }); }, { threshold: 0.5 });
             if (statsSection) statsObserver.observe(statsSection);
 
+            // TIMELINE
             const timelineItems = document.querySelectorAll('.timeline-item-anim, .fade-in-up');
             const timelineObserver = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-visible'); } else { if(e.target.classList.contains('timeline-item-anim')) e.target.classList.remove('is-visible'); } }); }, { threshold: 0.2, rootMargin: "0px 0px -10% 0px" });
             timelineItems.forEach(i => timelineObserver.observe(i));
             window.addEventListener('scroll', () => { const tc = document.querySelector('.timeline-container'); const tp = document.getElementById('timeline-progress'); if (tc && tp) { const r = tc.getBoundingClientRect(); const p = Math.max(0, Math.min(1, (window.innerHeight / 2 - r.top) / r.height)); tp.style.height = `${p * 100}%`; } });
 
+            // CAROUSEL
             const track = document.getElementById('testimonial-track'); const prevBtn = document.getElementById('prev-btn'); const nextBtn = document.getElementById('next-btn');
             if (track && prevBtn && nextBtn) { const sa = 340; prevBtn.addEventListener('click', () => track.scrollBy({ left: -sa, behavior: 'smooth' })); nextBtn.addEventListener('click', () => track.scrollBy({ left: sa, behavior: 'smooth' })); }
 
-            document.querySelectorAll('.faq-question').forEach(q => { q.addEventListener('click', () => { const i = q.parentNode; const a = q.nextElementSibling; const ia = i.classList.contains('active'); document.querySelectorAll('.faq-item').forEach(oi => { oi.classList.remove('active'); oi.querySelector('.faq-answer').style.maxHeight = null; }); if (!ia) { i.classList.add('active'); a.style.maxHeight = a.scrollHeight + "px"; } }); });
+            // FAQ ACCORDÉON
+            document.querySelectorAll('.faq-question').forEach(q => { 
+                q.addEventListener('click', () => { 
+                    const i = q.parentNode; 
+                    const a = q.nextElementSibling; 
+                    const ia = i.classList.contains('active'); 
+                    document.querySelectorAll('.faq-item').forEach(oi => { 
+                        oi.classList.remove('active'); 
+                        oi.querySelector('.faq-answer').style.maxHeight = null; 
+                    }); 
+                    if (!ia) { 
+                        i.classList.add('active'); 
+                        a.style.maxHeight = a.scrollHeight + "px"; 
+                    } 
+                }); 
+            });
 
-            // LOGIQUE DU MODAL
+            // MODAL
             const modal = document.getElementById('application-modal');
             const openBtns = document.querySelectorAll('.open-modal-btn');
             const closeBtn = document.getElementById('close-modal-btn');
 
-            openBtns.forEach(btn => { btn.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('active'); }); });
-            closeBtn.addEventListener('click', () => { modal.classList.remove('active'); });
-            modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('active'); });
+            openBtns.forEach(btn => { btn.addEventListener('click', (e) => { e.preventDefault(); modal.classList.add('active'); document.body.style.overflow = 'hidden'; }); });
+            closeBtn.addEventListener('click', () => { modal.classList.remove('active'); document.body.style.overflow = ''; });
+            modal.addEventListener('click', (e) => { if (e.target === modal) { modal.classList.remove('active'); document.body.style.overflow = ''; } });
+
+            // MENU MOBILE
+            const burgerBtn = document.getElementById('burger-btn');
+            const closeMenuBtnHamburger = document.getElementById('close-menu-btn-hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            if (burgerBtn) { burgerBtn.addEventListener('click', () => { mobileMenu.classList.add('active'); document.body.style.overflow = 'hidden'; }); }
+            const closeMobileMenu = () => { mobileMenu.classList.remove('active'); document.body.style.overflow = ''; };
+            if (closeMenuBtnHamburger) closeMenuBtnHamburger.addEventListener('click', closeMobileMenu);
+            mobileNavLinks.forEach(link => link.addEventListener('click', closeMobileMenu));
         });
 
-        // Navigation du Formulaire avec vérification
+        // FORMULAIRE NAVIGATION
         function nextStep(currentStep) {
             const stepEl = document.querySelector(`.form-step[data-step="${currentStep}"]`);
-            
-            // Vérification des champs requis (text, email, tel, textarea)
             const inputs = stepEl.querySelectorAll('input[required], textarea[required]');
             let allFilled = true;
             inputs.forEach(input => { if (!input.value.trim()) allFilled = false; });
-            
-            // Vérification des boutons radio (si présents dans l'étape)
             const radios = stepEl.querySelectorAll('input[type="radio"]');
             if (radios.length > 0) {
                 const names = [...new Set(Array.from(radios).map(r => r.name))];
                 names.forEach(n => { if (!stepEl.querySelector(`input[name="${n}"]:checked`)) allFilled = false; });
             }
-
-            if (!allFilled && currentStep !== 0) {
-                alert("Merci de remplir tous les champs obligatoires et de sélectionner une option avant de continuer.");
-                return;
-            }
-
+            if (!allFilled && currentStep !== 0) { alert("Merci de remplir tous les champs obligatoires."); return; }
+            
             stepEl.classList.remove('active');
             document.querySelector(`.form-step[data-step="${currentStep + 1}"]`).classList.add('active');
-            updateProgress(currentStep + 1);
+            document.getElementById('modal-progress').style.width = `${((currentStep + 1) / 5) * 100}%`;
         }
 
         function prevStep(currentStep) {
             document.querySelector(`.form-step[data-step="${currentStep}"]`).classList.remove('active');
             document.querySelector(`.form-step[data-step="${currentStep - 1}"]`).classList.add('active');
-            updateProgress(currentStep - 1);
+            document.getElementById('modal-progress').style.width = `${((currentStep - 1) / 5) * 100}%`;
         }
 
-        function updateProgress(step) {
-            const progress = document.getElementById('modal-progress');
-            progress.style.width = `${(step / 5) * 100}%`;
-        }
-
+        // ENVOI WEBHOOK
         async function submitForm() {
-            // 1. Ultime vérification
             const stepEl = document.querySelector(`.form-step[data-step="5"]`);
             const radios = stepEl.querySelectorAll('input[type="radio"]');
             const names = [...new Set(Array.from(radios).map(r => r.name))];
             let allFilled = true;
             names.forEach(n => { if (!stepEl.querySelector(`input[name="${n}"]:checked`)) allFilled = false; });
             
-            if (!allFilled) {
-                alert("Merci de répondre aux dernières questions pour valider ta candidature.");
-                return;
-            }
+            if (!allFilled) { alert("Merci de répondre aux dernières questions."); return; }
 
-            // 2. Changer le texte du bouton pendant l'envoi pour faire patienter
             const submitBtn = document.querySelector(`.form-step[data-step="5"] .btn-next`);
             const originalText = submitBtn.innerText;
-            submitBtn.innerText = "Envoi en cours...";
-            submitBtn.disabled = true;
+            submitBtn.innerText = "Envoi en cours..."; submitBtn.disabled = true;
 
-            // 3. Récupération de TOUTES les données du formulaire
             const formData = {
-                // Etape 1 : Contact
-                prenom: document.querySelector('.form-step[data-step="1"] input[type="text"]:nth-child(2)').value, // Attention à l'index si tu as mis des IDs
+                prenom: document.querySelector('.form-step[data-step="1"] input[type="text"]:nth-child(2)').value,
                 nom: document.querySelectorAll('.form-step[data-step="1"] input[type="text"]')[1].value,
                 email: document.querySelector('.form-step[data-step="1"] input[type="email"]').value,
                 whatsapp: document.querySelector('.form-step[data-step="1"] input[type="tel"]').value,
                 instagram: document.querySelectorAll('.form-step[data-step="1"] input[type="text"]')[2].value,
-                
-                // Etape 2 : Situation
                 age: document.querySelector('input[name="age"]:checked').value,
                 activite: document.querySelector('.form-step[data-step="2"] textarea').value,
-                
-                // Etape 3 : Niveau
                 niveau: document.querySelector('input[name="niveau"]:checked').value,
-                
-                // Etape 4 : Mindset
                 pourquoi_maintenant: document.querySelectorAll('.form-step[data-step="4"] textarea')[0].value,
                 manque: document.querySelectorAll('.form-step[data-step="4"] textarea')[1].value,
                 objectif_90j: document.querySelectorAll('.form-step[data-step="4"] textarea')[2].value,
-                
-                // Etape 5 : Finances
                 revenu_mensuel: document.querySelector('input[name="revenu"]:checked').value,
                 capacite_investissement: document.querySelector('input[name="investissement"]:checked').value,
-                
-                // Date de la candidature
+                source: "Lina Kadmiri Landing Page",
                 date: new Date().toISOString()
             };
 
-            // 4. L'URL DE TON WEBHOOK (À remplacer par l'URL que Make ou Zapier va te donner)
             const webhookURL = "https://hook.eu1.make.com/29rdkn1f3i3f1qonsdyq0miln1miudkq";
 
             try {
-                // 5. Envoi des données
-                const response = await fetch(webhookURL, {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(formData)
-                });
-
+                const response = await fetch(webhookURL, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(formData) });
                 if(response.ok) {
-                    alert("Félicitations ! Ta candidature a bien été envoyée à l'équipe NovaLab. Si ton profil est retenu, nous te contacterons sur WhatsApp sous 48h.");
-                    document.getElementById('application-modal').classList.remove('active');
-                    
-                    // Réinitialisation après envoi
-                    setTimeout(() => {
-                        document.querySelector('.form-step[data-step="5"]').classList.remove('active');
-                        document.querySelector('.form-step[data-step="0"]').classList.add('active');
-                        updateProgress(0);
-                        document.querySelectorAll('#application-modal input[type="text"], #application-modal input[type="email"], #application-modal input[type="tel"], #application-modal textarea').forEach(input => input.value = '');
-                        document.querySelectorAll('#application-modal input[type="radio"]').forEach(radio => radio.checked = false);
-                    }, 500);
-                } else {
-                    throw new Error("Erreur serveur");
-                }
+                    alert("Candidature envoyée avec succès ! Lina et l'équipe te recontacteront sous 48h.");
+                    document.getElementById('application-modal').classList.remove('active'); document.body.style.overflow = '';
+                    setTimeout(() => { location.reload(); }, 1000);
+                } else { throw new Error("Erreur serveur"); }
             } catch (error) {
-                alert("Une erreur est survenue lors de l'envoi. Vérifie ta connexion internet ou réessaie plus tard.");
-                console.error(error);
-            } finally {
-                // Remettre le bouton à son état normal
-                submitBtn.innerText = originalText;
-                submitBtn.disabled = false;
-            }
+                alert("Erreur lors de l'envoi. Réessaie plus tard."); console.error(error);
+            } finally { submitBtn.innerText = originalText; submitBtn.disabled = false; }
         }
     </script>
 </body>
